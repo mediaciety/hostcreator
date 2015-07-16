@@ -1,0 +1,24 @@
+<VirtualHost *:80>
+   ServerAdmin me@__SKEL__
+   ServerName __SKEL__
+   ServerAlias www.__SKEL__ __XIPNAME__
+   SuexecUserGroup hauke hauke 
+   AddHandler fcgid-script .php
+   DocumentRoot "/var/www/__SKEL__/docs"
+   DirectoryIndex index.htm index.html index.php
+<Directory />
+   Options +FollowSymLinks
+   AllowOverride None
+</Directory>
+<Directory "/var/www/__SKEL__/docs">
+   Options Indexes MultiViews FollowSymLinks ExecCGI
+   FCGIWrapper /var/www/__SKEL__/php-fcgi/php-fcgi-starter .php
+   AllowOverride all
+   Order allow,deny
+   allow from all
+</Directory>
+ErrorLog /var/www/__SKEL__/logs/error.log
+LogLevel warn
+CustomLog /var/www/__SKEL__/logs/access.log combined
+ServerSignature On
+</VirtualHost>

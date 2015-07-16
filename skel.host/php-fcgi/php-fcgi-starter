@@ -1,0 +1,5 @@
+#!/bin/sh
+PHPRC="/var/www/__SKEL__/conf/"
+export PHPRC
+export TMPDIR=/var/www/__SKEL__/tmp
+exec /usr/bin/php5-cgi
